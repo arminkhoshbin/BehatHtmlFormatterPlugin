@@ -185,8 +185,10 @@
                                             <li class="list-group-item alert alert-{% if step.isPassed %}success{% elseif step.isSkipped %}info{% elseif step.isPending %}warning{% else %}danger{% endif %}">
                                                 <b>{{ step.keyword }}</b> {{ step.text }}
                                                 {% if printStepArgs is not null %}
-                                                    {% for argument in step.arguments %}
-                                                        <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">{{ argument | nl2br }}</p>
+                                                    {% for arguments in step.arguments %}
+                                                        {% for argument in arguments %}
+                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">{{ argument | nl2br }}</p>
+                                                        {% endfor %}
                                                     {% endfor %}
                                                 {% endif %}
                                                 {% if step.exception is not null %}
